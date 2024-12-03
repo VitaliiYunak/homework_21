@@ -13,4 +13,5 @@ urlpatterns = [
     path('add_comment/', views.add_comment, name='add_comment'),
     path('save_comment/', views.save_comment, name='save_comment'),
     path('all_comments_post/', views.all_comments_post, name='all_comments_post'),
+    path('message_for_login/', views.message_for_login, name='message_for_login'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

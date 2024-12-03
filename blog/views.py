@@ -37,7 +37,7 @@ class RegisterUser(CreateView):
     form_class = RegisterUserForm
     template_name = 'blog/register.html'
     extra_context = {"title": "Реєстрація користувача"}
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('message_for_login')
 
     def form_valid(self, form):
         """ Якщо форма валідна, створюємо користувача та відправляємо лист """
@@ -168,3 +168,7 @@ def add_post(request):
     else:
         form = PostForm()
     return render(request, 'blog/add_post.html', {'form': form, "title": title})
+
+
+def message_for_login(request):
+    return render(request, 'blog/message_for_login.html')
