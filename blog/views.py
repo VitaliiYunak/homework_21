@@ -45,11 +45,14 @@ class RegisterUser(CreateView):
         # Отримання електронної пошти користувача
         user_email = form.cleaned_data.get('email')
         # Відправлення листа на email
-        send_email_to_user(
-            'Успіх',  # Тема
-            f'Вітаємо! Ви успішно зареєстровані на сайті.',
-            user_email
-        )
+        try:
+            send_email_to_user(
+                'Успіх',  # Тема
+                f'Вітаємо! Ви успішно зареєстровані на сайті.',
+                user_email
+            )
+        except Exception as e:
+            print(e)
         return response
 
 
