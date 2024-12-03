@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row row-cols-1 row-cols-md-2 justify-content-center">
+        <div class="col">
+            <h4 class="text-center">{{ title }}</h4>
+            <div class="card h-100">
+                <div class="card-body mx-auto d-block">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div>{{ form.non_field_errors }}</div>
+                        {% for field in form %}
+                            {% if field.errors %}
+                                <p class="alert alert-danger">
+                                    {% for error in field.errors %}{{ error }}{% endfor %}
+                                </p>
+                            {% endif %}
+                            <p>
+                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                <span>{{ field }}</span></p>
+                        {% endfor %}
+                        <br>
+                        <button class=" btn btn-secondary" type="submit">Зареєструватися</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

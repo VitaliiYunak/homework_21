@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row row-cols-1 row-cols-md-2 justify-content-center">
+        <div class="col">
+            <h4 class="text-center">{{ title }}</h4>
+            <div class="card h-100">
+                <img src="{{ post.image.url }}" class="card-img-top resize-image-width mx-auto d-block"
+                        alt="Зображення для поста">
+                <div class="card-body">
+                    <p><strong>{{ post.title }}</strong></p>
+                    <p>{{ post.content }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 justify-content-center" xmlns="http://www.w3.org/1999/html">
+        <div class="col">
+            <div class="card h-100">
+                {% if all_comments %}
+                    <ul class="list-group list-group-flush text-start">
+                        {% for field in all_comments %}
+                            <li class="list-group-item text-start">
+                                <i>Коментар:</i> {{ field.content }}<br>
+                                <i>Автор:</i> {{ field.comment_author }}<br>
+                                <i>Дата створення:</i> {{ field.created_at|date:"d.m.Y:H.m" }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <b>Коментарі відсутні</b>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

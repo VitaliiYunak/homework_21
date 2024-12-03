@@ -1,0 +1,24 @@
+body {
+  padding: 10px;
+}
+
+
+/* Begin Малюнки */
+.resize-image-width {
+  width: 500px;
+  height: auto;  /* Висота підлаштується пропорційно */
+}
+
+.resize-image-height {
+  height: 200px;
+  width: auto;  /* Ширина підлаштується пропорційно */
+}
+
+img {
+  padding-top: 15px;
+}
+/* End Малюнки*/
+
+button {
+    width: 190px;
+}

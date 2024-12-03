@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row row-cols-1 row-cols-md-2 justify-content-center">
+        <div class="col">
+            <h4 class="text-center">{{ title }}</h4>
+            <div class="card h-100">
+                <img src="{{ post.image.url }}" class="card-img-top resize-image-width mx-auto d-block"
+                     alt="Зображення для поста">
+                <div class="card-body">
+                    <p><strong>{{ post.title }}</strong></p>
+                    <p>{{ post.content }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 justify-content-center" xmlns="http://www.w3.org/1999/html">
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body mx-auto d-block">
+                    <form method="post" action="{% url 'save_comment' %}">
+                        {% csrf_token %}
+                        <div>{{ form.non_field_errors }}</div>
+                        {% for field in form %}
+                            <p>
+                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                <span>{{ field }}</span></p>
+                        {% endfor %}
+                        <br>
+                        <input type="hidden" name="post_id" value="{{ post.id }}">
+                        <button class=" btn btn-secondary" type="submit">Зберегти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
